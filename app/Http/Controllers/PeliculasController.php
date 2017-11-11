@@ -23,7 +23,7 @@ class PeliculasController extends Controller
 
     public function buscarPeliculasId($id)
     {
-        return view('home')->with('id', $this->peliculas[$id]);
+        return view('peliculas.peliculas')->with('id', $this->peliculas[$id]);
     }
 
     public function buscarPeliculasNombre($nombre)
@@ -43,15 +43,24 @@ class PeliculasController extends Controller
                 $resultados[$pelicula] = $value;
             }
         }
-
-        if (empty($resultados)) {
-            $retVal = [
-                0 => "no hay resultados"
-              ];
-        } else {
-            $retVal = $resultados;
-        }
-        
-        return view('home')->with('resultados', $retVal);
+        // if (empty($resultados)) {
+        //     $retVal = [
+        //         0 => "no hay resultados"
+        //       ];
+        // } else {
+        //     $retVal = $resultados;
+        // }
+        return view('peliculas.peliculas')->with('resultados', $resultados);
     }
+    public function agregarPeliculaForm()
+    {
+      return view('peliculas.agregarPelicula');
+    }
+    public function agregarPelicula(Request $request)
+    {
+      $this->peliculas[] = $request['titulo'];
+
+      return view('peliculas.nuevaPelicula', compact(end($this->peliculas)));
+    }
+
 }
