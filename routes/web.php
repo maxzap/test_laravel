@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 
+Route::get('/actores','ActorController@directory');
 Route::get('/peliculas/crear','PeliculasController@agregarPeliculaForm')->name('form_crearPelicula');
 Route::post('/peliculas/crear','PeliculasController@agregarPelicula')->name('crearPelicula');
 Route::get('/peliculas/{id}','PeliculasController@buscarPeliculasId');

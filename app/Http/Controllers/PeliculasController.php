@@ -59,8 +59,9 @@ class PeliculasController extends Controller
     public function agregarPelicula(Request $request)
     {
       $this->peliculas[] = $request['titulo'];
+      $lista = $this->peliculas;
 
-      return view('peliculas.nuevaPelicula', compact(end($this->peliculas)));
+      return view('peliculas.nuevaPelicula', compact('lista'));
     }
 
 }

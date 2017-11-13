@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Nueva Pelicula</title>
-  </head>
-  <body>
-    @if (@isset($pelicula))
-      {{ $pelicula }}
-    @endif
-  </body>
-</html>
+@extends('layouts.html_base')
+    @section('titulo')
+      <title>Nueva Pelicula</title>
+    @endsection
+
+    @section('cuerpo')
+      @forelse ($lista as $pelicula)
+        {{ $pelicula }}
+        <br>
+      @empty
+        {{ "No hay peliculas" }}
+      @endforelse
+    @endsection
