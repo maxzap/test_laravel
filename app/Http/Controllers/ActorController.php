@@ -15,4 +15,11 @@ class ActorController extends Controller
       $peliculas = Pelicula::All();
       return view('actores.actores', compact('actores', 'peliculas'));
     }
+    public function show($id)
+    {
+      $actor = Actor::find($id);
+
+      $peliculas =  $actor->peliculas();
+      return view('actores.actor', compact('actor', 'peliculas'));
+    }
 }

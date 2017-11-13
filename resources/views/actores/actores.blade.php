@@ -5,23 +5,20 @@
 
 @section('cuerpo')
     @forelse ($actores as $actor)
-      <table>
+      <table border="1" width='90%'>
         <td>
-          {{ $actor->first_name }},
-          {{ $actor->last_name }}
+          <a href="{{route('detalle_actor',$actor)}}">
+            {{ $actor->first_name }}, {{ $actor->last_name }}
+          </a>
         </td>
         </table>
     @empty
       {{ "No hay Actores Disponibles" }}
     @endforelse
-      <select class="" name="">
-          @forelse ($peliculas as $pelicula)
-              <option value="">
-                {{ $pelicula->title }}
-              </option>
-          @empty
-
-          @endforelse
-      </select>
+    @forelse ($peliculas as $pelicula)
+          {{ $pelicula->title }}
+    @empty
+      {{ "No hay peliculas disponibles" }}
+    @endforelse
 
 @endsection
