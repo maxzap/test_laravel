@@ -21,3 +21,5 @@ Route::get('/peliculas/crear','PeliculasController@agregarPeliculaForm')->name('
 Route::post('/peliculas/crear','PeliculasController@agregarPelicula')->name('crearPelicula');
 Route::get('/peliculas/{id}','PeliculasController@buscarPeliculasId');
 Route::get('/peliculas/buscar/{nombre}','PeliculasController@buscarPeliculasNombre');
+
+asdasdasd;
