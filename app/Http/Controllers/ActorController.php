@@ -20,6 +20,14 @@ class ActorController extends Controller
       $actor = Actor::find($id);
 
       $peliculas =  $actor->peliculas();
+
       return view('actores.actor', compact('actor', 'peliculas'));
+    }
+    public function search($nombre)
+
+    {
+      $actores = Actor::where('first_name', 'LIKE', '%$nombre%')->get();
+
+      return view('actores.actores', compact('actores'));
     }
 }

@@ -15,11 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/actores/buscar', 'ActorController@search')->name('actores_buscar');
 Route::get('/actores/{id}','ActorController@show')->name('detalle_actor');
 Route::get('/actores','ActorController@directory')->name('listado_pelicula');
 Route::get('/peliculas/crear','PeliculasController@agregarPeliculaForm')->name('form_crearPelicula');
 Route::post('/peliculas/crear','PeliculasController@agregarPelicula')->name('crearPelicula');
 Route::get('/peliculas/{id}','PeliculasController@buscarPeliculasId');
 Route::get('/peliculas/buscar/{nombre}','PeliculasController@buscarPeliculasNombre');
-
-asdasdasd;

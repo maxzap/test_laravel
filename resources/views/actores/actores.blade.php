@@ -4,6 +4,8 @@
 @endsection
 
 @section('cuerpo')
+  @include('actores._form-buscar')
+  <br>
     @forelse ($actores as $actor)
       <table border="1" width='90%'>
         <td>
@@ -15,10 +17,6 @@
     @empty
       {{ "No hay Actores Disponibles" }}
     @endforelse
-    @forelse ($peliculas as $pelicula)
-          {{ $pelicula->title }}
-    @empty
-      {{ "No hay peliculas disponibles" }}
-    @endforelse
+    @include('actores._form-limpiar')
 
 @endsection

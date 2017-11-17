@@ -15,5 +15,4 @@
       <td>{{ $pelicula->awards }}</td>
     @endforeach
   </table>
-
 @endsection
