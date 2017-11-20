@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/actores/crear','ActorController@agregarActorForm')->name('form_crearActor');
+Route::post('/actores/crear','ActorController@agregarActor')->name('crearActor');
 Route::get('/actores/buscar', 'ActorController@search')->name('actores_buscar');
 Route::get('/actores','ActorController@directory')->name('listado_actores');
 Route::get('/actores/{id}','ActorController@show')->name('detalle_actor');

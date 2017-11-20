@@ -28,4 +28,26 @@ class ActorController extends Controller
       $actores = Actor::where('first_name', 'like', $actor . '%')->get();
       return view('actores.actores', compact('actores'));
     }
+    public function agregarActorForm()
+    {
+      $actor = new Actor();
+      return view('actores.crear-actor', compact('actor'));
+    }
+
+    public function agregarActor(Request $request)
+    {
+      $this->validate(
+        $request,
+        [
+          'first_name' => 'required',
+          'last_name' => 'required|unique:actors'
+          // 'last_name' => 'required|unique:actors,'.' last_name'.', NULL, id, first_name,'. $request->input('first_name')
+        ]
+      );
+      $actor = new Actor($request->All());
+      $actor->save();
+
+      return redirect(route('listado_actores'));
+
+    }
 }
