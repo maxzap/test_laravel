@@ -12,8 +12,7 @@ class ActorController extends Controller
     public function directory()
     {
       $actores = Actor::All();
-      $peliculas = Pelicula::All();
-      return view('actores.actores', compact('actores', 'peliculas'));
+      return view('actores.actores', compact('actores'));
     }
     public function show($id)
     {
@@ -23,11 +22,10 @@ class ActorController extends Controller
 
       return view('actores.actor', compact('actor', 'peliculas'));
     }
-    public function search($nombre)
-
+    public function search(Request $request)
     {
-      $actores = Actor::where('first_name', 'LIKE', '%$nombre%')->get();
-
+      $actor = $request->input('actor');
+      $actores = Actor::where('first_name', 'like', $actor . '%')->get();
       return view('actores.actores', compact('actores'));
     }
 }

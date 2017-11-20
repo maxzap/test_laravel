@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('/actores/buscar', 'ActorController@search')->name('actores_buscar');
+Route::get('/actores','ActorController@directory')->name('listado_actores');
 Route::get('/actores/{id}','ActorController@show')->name('detalle_actor');
-Route::get('/actores','ActorController@directory')->name('listado_pelicula');
+Route::get('/peliculas','PeliculasController@directory')->name('listado_peliculas');
 Route::get('/peliculas/crear','PeliculasController@agregarPeliculaForm')->name('form_crearPelicula');
 Route::post('/peliculas/crear','PeliculasController@agregarPelicula')->name('crearPelicula');
-Route::get('/peliculas/{id}','PeliculasController@buscarPeliculasId');
-Route::get('/peliculas/buscar/{nombre}','PeliculasController@buscarPeliculasNombre');
+Route::get('/peliculas/buscar','PeliculasController@buscarPeliculasNombre')->name('pelicula_buscar');
+Route::get('/peliculas/{id}','PeliculasController@buscarPeliculasId')->name('detalle_pelicula');

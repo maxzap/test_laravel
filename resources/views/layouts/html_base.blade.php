@@ -5,6 +5,7 @@
     @yield('titulo')
   </head>
   <body>
+    <br><br>
     @yield('cuerpo')
   </body>
 </html>

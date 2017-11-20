@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Peliculas</title>
-  </head>
-  <body>
-    @if (@isset($id))
-      {{ $id }}
-    @endif
-    @if (@isset($resultados))
-      @forelse ($resultados as $key => $value)
-        {{ $value }}
-      @empty
-        {{ "no hay resultados" }}
-      @endforelse
-    @endif
+@extends('layouts.html_base')
+@section('titulo')
+  <title>Peliculas</title>
+@endsection
+<a href="javascript: history.go(-1)">Regresar</a>
+<a href="{{ route('listado_actores')}}">Listado Actores</a>
+@section('cuerpo')
+  @include('actores._form-buscar-pelicula')
 
-  </body>
-</html>
+
+  {{-- @if (@isset($id))
+  {{ $id }}
+@endif
+@if (@isset($resultados))
+@forelse ($resultados as $key => $value)
+{{ $value }}
+@empty
+{{ "no hay resultados" }}
+@endforelse
+@endif --}}
+@forelse ($peliculas as $pelicula)
+  <table border='1' width='90%'>
+    <tr>
+      <td><a href="{{route('detalle_pelicula', $pelicula)}}">{{ $pelicula->title }}</a></td>
+      <td width='40px'>{{ $pelicula->rating }}</td>
+      <td width='40px'>{{ $pelicula->awards }}</td>
+    </tr>
+  </table>
+@empty
+  {{ "No hay peliculas disponibles" }}
+@endforelse
+
+@endsection
