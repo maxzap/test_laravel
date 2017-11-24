@@ -14,6 +14,7 @@ class ActorController extends Controller
       $actores = Actor::All();
       return view('actores.actores', compact('actores'));
     }
+
     public function show($id)
     {
       $actor = Actor::find($id);
@@ -22,12 +23,14 @@ class ActorController extends Controller
 
       return view('actores.actor', compact('actor', 'peliculas'));
     }
+
     public function search(Request $request)
     {
       $actor = $request->input('actor');
       $actores = Actor::where('first_name', 'like', $actor . '%')->get();
       return view('actores.actores', compact('actores'));
     }
+
     public function agregarActorForm()
     {
       $actor = new Actor();
@@ -49,5 +52,26 @@ class ActorController extends Controller
 
       return redirect(route('listado_actores'));
 
+    }
+
+    public function edit($id, Request $request)
+    {
+      $actor = Actor::findOrFail($id);
+      return view('actores.edit', compact('actor'));
+    }
+    public function update($id, Request $request)
+    {
+      dd($reques['first_name']);
+      $this->validate(
+        $request,
+        [
+          'first_name' => 'required',
+          'last_name' => 'required|unique:actors'
+        ]
+      );
+      $actor = Actor::findOrFail($id);
+      $actor->fill($request->all());
+      $actor->save();
+      return redirect(route('detalle_actor'))
     }
 }

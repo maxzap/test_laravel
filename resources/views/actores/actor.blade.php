@@ -10,6 +10,11 @@
       {{ $actor->first_name}}
       {{ $actor->last_name}}
       <br>
+      <form class="" action="{{ route('form_editActor', $actor) }}" method="get">
+        {{ csrf_field() }}
+        <button type="submit" name="update">Editar</button>
+      </form>
+      <br>
       <table border="1" width='90%'>
           <tr>
             @foreach ($actor->peliculas as $pelicula)

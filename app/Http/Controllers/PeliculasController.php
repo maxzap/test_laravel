@@ -69,7 +69,7 @@ class PeliculasController extends Controller
     public function agregarPeliculaForm()
     {
       $pelicula = new Pelicula();
-      return view('peliculas.agregarPelicula', compact('pelicula'));
+      return view('peliculas.crear-pelicula', compact('pelicula'));
     }
     public function agregarPelicula(Request $request)
     {

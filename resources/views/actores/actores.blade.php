@@ -4,6 +4,7 @@
 @endsection
     <a href="javascript: history.go(-1)">Regresar</a>
     <a href="{{ route('listado_peliculas')}}">Listado Peliculas</a>
+    <a href="{{ route('form_crearActor') }}">Crear Actor</a>
 @section('cuerpo')
   @include('actores._form-buscar-actor')
   <br>

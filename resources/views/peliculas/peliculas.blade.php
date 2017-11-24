@@ -4,9 +4,9 @@
 @endsection
 <a href="javascript: history.go(-1)">Regresar</a>
 <a href="{{ route('listado_actores')}}">Listado Actores</a>
+<a href="{{ route('form_crearPelicula') }}">Crear Pelicula</a>
 @section('cuerpo')
-  @include('actores._form-buscar-pelicula')
-
+  @include('peliculas._form-buscar-pelicula')
 
   {{-- @if (@isset($id))
   {{ $id }}
